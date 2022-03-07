@@ -126,6 +126,20 @@
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
                 </div>
+                @if($user)
+                    <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
+                        <div class="text-center text-sm text-gray-500 sm:text-left">
+                            @foreach($user->skills as $skill)
+                            <div class="flex items-center">
+                                <p>{{ $skill->name }}</p>
+                                @foreach($skill->recommendations as $recommendation)
+                                <p>{{ $recommendation->id }}</p>
+                                @endforeach
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </body>
