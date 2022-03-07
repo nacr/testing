@@ -14,12 +14,8 @@ class Skill extends Model
      */
     public function users(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'users')
+        return $this->belongsToMany(User::class)
+                    ->using(SkillUser::class)
                     ->withPivot('id');
-    }
-
-    public function recommendations(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Recommendation::class, 'skill_user_id');
     }
 }

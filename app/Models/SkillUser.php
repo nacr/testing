@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class SkillUser extends Model
+class SkillUser extends Pivot
 {
     use HasFactory;
 
@@ -23,6 +23,6 @@ class SkillUser extends Model
 
     public function recommendations(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Recommendation::class);
+        return $this->hasMany(Recommendation::class, 'skill_user_id');
     }
 }

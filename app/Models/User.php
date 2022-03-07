@@ -48,7 +48,7 @@ class User extends Authenticatable
     public function skills(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Skill::class, 'skill_user')
-            //->with('recommendations')
+            ->using(SkillUser::class)
             ->withPivot('id');
     }
 
@@ -57,8 +57,9 @@ class User extends Authenticatable
      */
     public function skillsWithRecommendations(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Skill::class, 'skill_user')
-            ->with('recommendations')
+        return $this->belongsToMany(Skill::class)
+            // ->with('recommendations')
+            ->using(SkillUser::class)
             ->withPivot('id');
     }
 
