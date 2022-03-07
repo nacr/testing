@@ -63,12 +63,12 @@ class User extends Authenticatable
             ->withPivot('id');
     }
 
-    public function test()
+    /*public function test()
     {
         return $this->hasManyThrough(
             Recommendation::class,
             SkillUser::class,
             'user_id',
             'skill_user_id');
-    }
+    }*/
 }
